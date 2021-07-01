@@ -28,17 +28,21 @@ app.get('/', (req,res) => {
 })
 
 
+function manageInput(req){
+  sendAddress = req.body.sender;
+  let batch = req.body.batch.split('\n');
+  for(i = 0; i < batch.length; i++){
+    let split_data = batch[i].split(',');
+    accounts.push(split_data[0]);
+    amounts.push(parseInt(split_data[1]));
+  }
+  for(i = 0;i<accounts.length;i++){
+    console.log(accounts[i]+"    $"+amounts[i]);
+  }
+}
+
 app.post('/', (req,res) => {
-sendAddress = req.body.sender;
-let batch = req.body.batch.split('\n');
-for(i = 0; i < batch.length; i++){
-  let split_data = batch[i].split(',');
-  accounts.push(split_data[0]);
-  amounts.push(parseInt(split_data[1]));
-}
-for(i = 0;i<accounts.length;i++){
-  console.log(accounts[i]+"    $"+amounts[i]);
-}
+manageInput(req);
 
 const deploy = async() => {
 
