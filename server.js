@@ -7,7 +7,7 @@ const Web3 = require('web3');
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const {interface,bytecode} = require('./compile');
 const provider = new HDWalletProvider(
-  'desert please analyst lion uncover delay list share suggest rain history now',
+  MNEMONIC,
 'https://ropsten.infura.io/v3/1f79508c7e58448c8fe7248222dc3133'
 );
 const web3 = new Web3(provider);
